@@ -3,10 +3,10 @@ USE ShopDB;
 
 CREATE TABLE Products (
   ID INT AUTO_INCREMENT,
-  NAME VARCHAR(50),
-  DESCRIPTION VARCHAR(100),
-  PRICE INT,
-  WarehouseAmount INT
+  Name VARCHAR(50),
+  Description VARCHAR(100),
+  Price INT,
+  WarehouseAmount INT,
   PRIMARY KEY (ID)
 );
 
@@ -15,23 +15,23 @@ CREATE TABLE Customers (
   FirstName VARCHAR(50),
   LastName VARCHAR(50),
   Email VARCHAR(50),
-  Address VARCHAR(100)
+  Address VARCHAR(100),
   PRIMARY KEY (ID)
 );
 
 CREATE TABLE Orders (
   ID INT AUTO_INCREMENT,
   CustomerID INT,
-  Date DATE
-  PRIMARY KEY (ID)
+  Date DATE,
+  PRIMARY KEY (ID),
   FOREIGN KEY (CustomerID) REFERENCES Customers(ID) ON DELETE SET NULL
 );
 
 CREATE TABLE OrderItems (
   ID INT AUTO_INCREMENT,
   ProductID INT,
-  OrderID INT
-  PRIMARY KEY (ID)
+  OrderID INT,
+  PRIMARY KEY (ID),
   FOREIGN KEY (OrderID) REFERENCES Orders(ID) ON DELETE SET NULL,
   FOREIGN KEY (ProductID) REFERENCES Products(ID) ON DELETE SET NULL
 );
